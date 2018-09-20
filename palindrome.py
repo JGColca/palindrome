@@ -1,21 +1,26 @@
-letter_array =[]
+
 word = input("Please enter a word: ")
-def separate_letters():
+word_lower = word.lower()
+forward_letters = []
+backward_letters = []
 
-    for index in range(0,len(word)):
-      letter_array.append(word[index])
+def letters_forward(word_lower):
+    for index in range(0,len(word_lower)):
+      forward_letters.append(word_lower[index])
 
-separate_letters()
+def letters_backward(word_lower):
+    for index in range((len(word_lower) - 1), -1, -1):
+      backward_letters.append(word_lower[index])
 
-def is_palindrome():
-    for index in range(0, len(letter_array)):
-        while True:
-            if letter_array[index] == letter_array[(len(letter_array)-1)-(index)]:
-                return(F'{word} is a palindrome')
-            else:
-                break
+def is_palindrome(forward_letters, backward_letters):
+    if forward_letters == backward_letters:
+        palindrome = f'{word} is a palindrome.'
+    else:
+        palindrome = f'{word} is not a palindrome.'
+    return palindrome
 
-        return(F'{word} is not a palindrome')
+letters_forward(word_lower)
+letters_backward(word_lower)
 
 
-print(is_palindrome())
+print(is_palindrome(forward_letters, backward_letters))
